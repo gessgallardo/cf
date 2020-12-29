@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 module Cf
   module Calendar
     class Mentor < Client
-      ENDPOINT = '/mentors'.freeze
+      ENDPOINT = '/mentors'
 
       def initialize(id:)
         super

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::School::V1::StudentsController < ApplicationController
   def show
     student = OpenStruct.new({ id: 1, first_name: 'Gess', last_name: 'Gallardo', mentors: [1] })

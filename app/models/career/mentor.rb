@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Career::Mentor < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
 

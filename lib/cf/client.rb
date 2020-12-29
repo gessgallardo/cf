@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Cf
   class Client
     include HTTParty

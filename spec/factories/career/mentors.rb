@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :career_mentor, class: 'Career::Mentor' do
     first_name { Faker::Name.first_name }

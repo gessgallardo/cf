@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :career_allocated_call, class: 'Career::AllocatedCall' do
     student { create(:career_student) }

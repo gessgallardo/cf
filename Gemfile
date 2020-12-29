@@ -6,12 +6,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.2'
 
 gem 'bootsnap', '>= 1.4.4', require: false
+gem 'httparty'
 gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.0'
 gem 'rubocop', '~> 1.6', require: false
-gem 'httparty'
 
 group :development, :test do
   gem 'factory_bot_rails'

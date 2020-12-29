@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::School::V1::MentorsController < ApplicationController
   def show
     render json: mentor.as_json, status: :ok
