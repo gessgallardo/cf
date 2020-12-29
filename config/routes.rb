@@ -1,5 +1,17 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root 'application#index'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :school do
+      namespace :v1 do
+        resources :students, only: :show do
+          resources :mentors, only: %i[index show] do
+            get 'availibility'
+          end
+        end
+      end
+    end
+  end
 end
