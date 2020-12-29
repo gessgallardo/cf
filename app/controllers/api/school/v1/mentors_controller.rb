@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Api::School::V1::MentorsController < ApplicationController
+  def index
+    render json: student&.mentors, status: :ok
+  end
+
   def show
     render json: mentor.as_json, status: :ok
   end
@@ -14,27 +18,16 @@ class Api::School::V1::MentorsController < ApplicationController
   end
 
   def student
-    @student ||= OpenStruct.new(
-      id: student_params[:student_id],
-      first_name: 'Gess',
-      last_name: 'Gallardo',
-      mentors: [1]
-    )
+    @student ||= Career::Student.find student_params[:student_id]
   end
 
   def mentor
-    @mentor ||= OpenStruct.new(
-      id: mentor_params[:id],
-      first_name: agenda[:mentor][:name].split&.first,
-      last_name: agenda[:mentor][:name].split&.last,
-      students: [student],
-      agenda: agenda[:calendar]
-    )
+    @mentor ||= Career::Mentor.find student_params[:id]
   end
 
   private
 
   def agenda
-    @agenda ||= Cf::Calendar::Mentor.new(id: mentor_params[:id]).agenda
+    @agenda ||= Cf::Calendar::Mentor.new(id: mentor.calendar_id).agenda
   end
 end

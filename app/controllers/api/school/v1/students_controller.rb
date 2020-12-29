@@ -2,7 +2,14 @@
 
 class Api::School::V1::StudentsController < ApplicationController
   def show
-    student = OpenStruct.new({ id: 1, first_name: 'Gess', last_name: 'Gallardo', mentors: [1] })
     render json: student, status: :ok
+  end
+
+  def student_params
+    params.permit(:id)
+  end
+
+  def student
+    @student ||= Career::Student.find student_params[:id]
   end
 end

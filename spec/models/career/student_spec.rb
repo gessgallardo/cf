@@ -3,10 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe Career::Student, type: :model do
-  let(:student) { create(:career_student) }
+  describe 'factories' do
+    let(:student) { create(:career_student) }
 
-  it 'has a valid factory' do
-    expect(student).to be_valid
+    it 'has a valid factory' do
+      expect(student).to be_valid
+    end
+
+    context 'when with_mentors is required' do
+      let(:student) { create(:career_student, :with_mentors) }
+
+      it 'has 5 mentors' do
+        expect(student.mentors.count).to eq(5)
+      end
+    end
   end
 
   # @TODO:
