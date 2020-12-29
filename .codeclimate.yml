@@ -1,0 +1,40 @@
+AllCops:
+  TargetRubyVersion: 2.7.2
+  NewCops: enable
+  Exclude:
+    - bin/**/*
+    - db/migrate/*
+    - log/**/*
+    - spec/support/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - node_modules/**/*
+    - db/schema.rb
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - 'config/**/*.rb'
+    - 'spec/**/*.rb'
+
+Layout/LineLength:
+  Max: 120
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/NumericLiterals:
+  Enabled: false
+
+require:
+  - rubocop-rails
+  - rubocop-rspec

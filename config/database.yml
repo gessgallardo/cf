@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= 'postgres' if ENV.key?('DOCKER_ENV') %>
+  host: <%= ENV.key?('DOCKER_ENV') ? 'db' : 'localhost' %>
+
+development:
+  <<: *default
+  database: cf_development
+
+test:
+  <<: *default
+  database: cf_test
+
+staging:
+  <<: *default
+  database: cf_staging
+  host: postgres-staging
+  username: cf
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
