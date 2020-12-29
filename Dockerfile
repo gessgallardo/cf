@@ -11,7 +11,8 @@ RUN apk update && apk add --no-cache \
     ruby \
     openssl \
     postgresql-client \
-    postgresql-dev
+    postgresql-dev \
+    less
 
 ENV BUNDLE_FORCE_RUBY_PLATFORM=1
 
