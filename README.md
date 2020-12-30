@@ -7,6 +7,10 @@ project for CF test.
 
 ## API::School::V1
 
+- sandbox:
+  -- base url: https://cf-nff5.onrender.com/
+  -- mentor schedule: https://cf-nff5.onrender.com/api/school/v1/students/fcb0272c-c341-4b0c-a9ec-fd2e74ffb6f0/mentors/27760bc3-0f35-408d-aa3b-12be1ba30900/availability
+
 - documentation: https://documenter.getpostman.com/view/13898358/TVt18QJi
 - postman collection: https://www.getpostman.com/collections/6a8fe5404917e5b58e5c
 
