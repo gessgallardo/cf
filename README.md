@@ -1,3 +1,46 @@
+# CF/Api
+[![Maintainability](https://api.codeclimate.com/v1/badges/70a047e4db8776c58351/maintainability)](https://codeclimate.com/github/gessgallardo/cf/maintainability)
+
+project for CF test.
+
+
+
+## API::School::V1
+
+documentation: hhttps://documenter.getpostman.com/view/13898358/TVt18QJi
+postman: https://www.getpostman.com/collections/6a8fe5404917e5b58e5c
+
+I decide to separate the api models from the rails models in order to be able to 
+have a domain driven approach, which allow us to quickly change between versions
+without having to much legacy/dependency as different parts of the sytem be morphed to work with different versions.
+
+
+
+### Api::School::V1::Mentor
+
+  Serializer for API Mentors
+
+  Methods
+
+    - build(mentor, calendar_client, time_zone)
+      - builder pattern for api v1 mentors
+
+    - #filter_slots_by_date(date: date)
+      - returns the slots available for a given date
+
+    - #slot_present?(datetime):
+      - validate if date is available
+
+    - #refresh_slots!
+      - remove allocated calls not longer in mentor calendar
+      - nth: clears cache
+      - nth: should trigger some kind to notification for user
+
+### Api::School::V1::CalendarSlot
+
+  Serializer for CalendarSlots
+
+
 ## Models
 
 Model information
@@ -22,27 +65,6 @@ Model information
     - students, through: mentorships
     - allocated_calls
     - calendar_id
-
-  Methods
-
-    - schedule_call(student, datetime):
-      - should clear cache before allocate call
-      - schedule the call
-
-    - #slots(by_date: date):
-      - returns the slots available for a given date
-
-    - #check_availabilty(datetime): 
-      - validate if date is available
-
-    - #avaiblity:
-      - merge of allocated_calls and calendar.agenda
-      - probably needs to be cached
-
-    - #refresh_availiablity
-      - remove allocated calls not longer in mentor calendar
-      - clears cache
-      - nth: should trigger some kind to notification for user
 
 ### Mentorships
 ---
