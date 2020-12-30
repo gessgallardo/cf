@@ -39,15 +39,53 @@ module Api
           date_time = date.to_date.in_time_zone(in_time_zone)
           eod = date_time.end_of_day
           bod = date_time.beginning_of_day
-          # raise StandardError.new(message: 'date cannot be in past') if eod.past?
 
           @calendar_slots.select! do |calendar_slot|
             calendar_slot.date_time.between?(bod, eod)
           end
         end
 
-        def schedule(_student:, _date:)
-          raise NotImplementedError
+        def find_slot(date)
+          @calendar_slots.find { |slot| slot.date_time == date }
+        end
+
+        def schedule(student:, date:, description:, in_time_zone: 'UTC')
+          utc_time = date.to_datetime.in_time_zone('UTC')
+          converted_date_time = date.to_datetime.in_time_zone(in_time_zone)
+
+          return slot_not_found unless slot_present?(date: converted_date_time, in_time_zone: in_time_zone)
+          return already_allocated if allocated_call?(converted_date_time)
+
+          mentor.allocated_calls.create(student: student, description: description, date_time: utc_time)
+        end
+
+        # TODO: Definetly need to abstract in_time_zone is all over the place :@
+        def refresh_slots!(in_time_zone: 'UTC')
+          @calendar_slots = Api::School::V1::Mentor.build(mentor: mentor, in_time_zone: in_time_zone).calendar_slots
+        end
+
+        private
+
+        def mentor
+          @mentor ||= ::Career::Mentor.find(@id)
+        end
+
+        def slot_present?(date:, in_time_zone: 'UTC')
+          refresh_slots!(in_time_zone: in_time_zone)
+          find_slot(date).present?
+        end
+
+        def slot_not_found
+          raise StandardError, 'time slot cannot be found'
+        end
+
+        def already_allocated
+          raise StandardError, 'time slot that has already been allocated to a call'
+        end
+
+        def allocated_call?(date)
+          allocated_call = mentor.allocated_calls.find_by(date_time: date)
+          allocated_call.present?
         end
       end
     end
