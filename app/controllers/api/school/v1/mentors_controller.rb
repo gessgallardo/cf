@@ -22,7 +22,16 @@ class Api::School::V1::MentorsController < ApplicationController
   end
 
   def schedule
-    api_mentor.schedule(student: student, date: date_time)
+    date_time = schedule_params.fetch(:date_time)
+    description = schedule_params.fetch(:description)
+    response = api_mentor.schedule(
+      student: student,
+      date: date_time,
+      description: description,
+      in_time_zone: time_zone_param
+    )
+
+    render json: response, status: :accepted
   end
 
   private
@@ -41,6 +50,10 @@ class Api::School::V1::MentorsController < ApplicationController
 
   def mentor_params
     params.permit(:id)
+  end
+
+  def schedule_params
+    params.permit(:date_time, :description)
   end
 
   def time_zone_param
