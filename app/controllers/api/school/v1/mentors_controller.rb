@@ -9,11 +9,11 @@ class Api::School::V1::MentorsController < ApplicationController
     render json: response, status: :ok
   end
 
-  def availibility
+  def availability
     # TODO: Maybe move in_time_zone to be an stored
-    if availibility_params[:date]
+    if availability_params[:date]
       api_mentor.filter_slots_by_date!(
-        date: availibility_params[:date],
+        date: availability_params[:date],
         in_time_zone: time_zone_param
       )
     end
@@ -40,7 +40,7 @@ class Api::School::V1::MentorsController < ApplicationController
     @api_mentor ||= Api::School::V1::Mentor.build(mentor: mentor, in_time_zone: time_zone_param)
   end
 
-  def availibility_params
+  def availability_params
     params.permit(:date, :time_zone)
   end
 

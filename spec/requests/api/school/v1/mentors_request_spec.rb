@@ -120,10 +120,10 @@ RSpec.describe 'Api::School::V1::Mentors', type: :request do
     end
   end
 
-  describe 'GET /api/school/v1/students/:student_id/mentors/:id/availibility' do
+  describe 'GET /api/school/v1/students/:student_id/mentors/:id/availability' do
     subject(:trigger_request) do
       VCR.use_cassette('cf_calendar_api') do
-        get availibility_api_school_v1_student_mentor_path(id: mentor.id, student_id: student.id)
+        get availability_api_school_v1_student_mentor_path(id: mentor.id, student_id: student.id)
       end
     end
 
@@ -151,8 +151,8 @@ RSpec.describe 'Api::School::V1::Mentors', type: :request do
 
     context 'when date is included' do
       subject(:trigger_request) do
-        VCR.use_cassette('api_school_v1_students_student_id_mentors_id_availibility') do
-          get availibility_api_school_v1_student_mentor_path(id: mentor.id, student_id: student.id, date: '2020-10-24')
+        VCR.use_cassette('api_school_v1_students_student_id_mentors_id_availability') do
+          get availability_api_school_v1_student_mentor_path(id: mentor.id, student_id: student.id, date: '2020-10-24')
         end
       end
 
