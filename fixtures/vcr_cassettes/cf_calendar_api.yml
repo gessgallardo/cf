@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://private-37dacc-cfcalendar.apiary-mock.com/mentors/1/agenda
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '13919'
+      X-Apiary-Ratelimit-Limit:
+      - '120'
+      X-Apiary-Ratelimit-Remaining:
+      - '119'
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - OPTIONS,GET,HEAD,POST,PUT,DELETE,TRACE,CONNECT
+      Access-Control-Expose-Headers:
+      - Content-Type
+      Access-Control-Max-Age:
+      - '10'
+      X-Apiary-Transaction-Id:
+      - 5fec190c392a22008937ec35
+      Date:
+      - Wed, 30 Dec 2020 06:07:08 GMT
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "mentor": {
+                "name": "Max Mustermann",
+                "time_zone": "-03:00"
+            },
+            "calendar": [
+                {
+                    "date_time": "2020-10-24 17:10:09 +0200"
+                },
+                {
+                 "date_time": "2020-10-25 13:11:55 +0100"
+               },
+               {
+                 "date_time": "2020-10-26 23:43:20 +0100"
+               }
+            ]
+        }
+  recorded_at: Wed, 30 Dec 2020 06:07:08 GMT
+recorded_with: VCR 6.0.0
