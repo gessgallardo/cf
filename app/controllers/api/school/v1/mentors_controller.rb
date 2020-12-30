@@ -4,7 +4,7 @@ class Api::School::V1::MentorsController < ApplicationController
   def index
     response = student.mentors.map do |m|
       ::Api::School::V1::Mentor.build(mentor: m, in_time_zone: time_zone_param)
-  end
+    end
 
     render json: response, status: :ok
   end
