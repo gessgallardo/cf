@@ -2,8 +2,6 @@
 
 class ApplicationController < ActionController::API
   def index
-    raise ActiveRecord::RecordInvalid
-
     render json: {}, status: :ok
   end
 
