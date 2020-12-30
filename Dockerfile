@@ -21,7 +21,6 @@ RUN gem install bundler --version "2.2.1"
 RUN bundle config set path '/bundle'
 
 COPY Gemfile* ./
-RUN bundle install
 
 FROM base as development
 RUN bundle install --clean --without production
@@ -29,7 +28,6 @@ COPY . ./
 
 FROM base as production
 ENV RAILS_ENV=production
-ENV NODE_ENV=production
 
 ARG SECRET_KEY_BASE
 ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
