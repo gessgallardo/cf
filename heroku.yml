@@ -1,8 +1,0 @@
-build:
-  docker:
-    web: Dockerfile
-    target: production
-  config:
-    RAILS_ENV: production
-run:
-  web: bundle exec puma -C config/puma.rb

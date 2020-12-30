@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         resources :students, only: :show do
           resources :mentors, only: :index do
             member do
-              get 'availibility'
+              get 'availability'
               post 'schedule'
             end
           end
