@@ -14,7 +14,7 @@ project for CF test.
 - documentation: https://documenter.getpostman.com/view/13898358/TVt18QJi
 - postman collection: https://www.getpostman.com/collections/6a8fe5404917e5b58e5c
 
-> I decide to separate the api models from the rails models in order to be able to  have a domain driven approach, which allow us to quickly change between versions without having to much legacy/dependency as different parts of the sytem be morphed to work with different versions.
+> I decide to separate the api models from the rails models in order to be able to  have a domain driven approach, which allow us to quickly change between versions without having to much legacy/dependency as different parts of the system can be morphed to work with different versions.
 
 
 ### Api::School::V1::Mentor
