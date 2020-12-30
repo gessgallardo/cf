@@ -9,6 +9,16 @@ RSpec.describe Career::Mentor, type: :model do
     expect(mentor).to be_valid
   end
 
+  describe 'factories' do
+    let(:mentor) { create(:career_mentor, :with_students) }
+
+    context 'when students is required' do
+      it 'has an student' do
+        expect(mentor.students.count).to eq(5)
+      end
+    end
+  end
+
   describe 'validations' do
     subject(:validated_mentor) do
       mentor.valid?

@@ -26,6 +26,9 @@ Layout/LineLength:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 

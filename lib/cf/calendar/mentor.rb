@@ -11,6 +11,7 @@ module Cf
         @id = id
       end
 
+      # TODO: add error handling
       def agenda
         path = "#{ENDPOINT}/#{@id}/agenda"
         response = self.class.get(path, verify: true)

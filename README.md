@@ -58,11 +58,12 @@ Attributes
     - mentor
     - student
     - date_time
+    - description
 
 
 ## External Libraries/API
 
-  - [CareerFound CalendarAPI](link)
+  - [CareerFound CalendarAPI](https://cfcalendar.docs.apiary.io/)
 
 
 ## Contributing

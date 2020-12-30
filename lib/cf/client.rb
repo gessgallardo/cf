@@ -15,5 +15,13 @@ module Cf
     rescue StandardError => e
       { error: e.message, status: :internal_server_error }
     end
+
+    def parse_error(response)
+      body = JSON.parse response.body
+
+      { error: body, status: response.code }
+    rescue JSON::ParserError => e
+      { error: e.message, status: response.code }
+    end
   end
 end

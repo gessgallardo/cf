@@ -7,8 +7,11 @@ Rails.application.routes.draw do
     namespace :school do
       namespace :v1 do
         resources :students, only: :show do
-          resources :mentors, only: %i[index show] do
-            get 'availibility'
+          resources :mentors, only: :index do
+            member do
+              get 'availibility'
+              get 'schedule'
+            end
           end
         end
       end
